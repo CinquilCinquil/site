@@ -1,6 +1,5 @@
 // Get the square element
 var square = document.getElementById("square");
-var coisa = document.getElementById("coisa");
 
 // Set the initial position of the square
 var x = 50;
@@ -11,7 +10,17 @@ square.style.top = y + "px";
 
 var t = [false,false,false,false];
 
-var enemies = [[0.0,0.0,3]];
+var nEnemies = 3;
+var enemies = [];
+
+for (let i = 0;i < nEnemies;i ++)
+{
+	const box = document.createElement("div");
+	box.id = "coisa";
+	document.body.appendChild(box);
+	
+	enemies.push([300.0*i,200.0*i,3,box]);
+}
 
 function sign(valor)
 {
@@ -28,15 +37,15 @@ function sign(valor)
 
 function update()
 {
-    for (let i = 0;i < 1;i ++)
+    for (let i = 0;i < nEnemies;i ++)
     {
         var e = enemies[i];
         
         e[0] += sign(parseFloat(square.style.left) - e[0]);
         e[1] += sign(parseFloat(square.style.top) - e[1]);
 
-        coisa.style.left = e[0] + "px";
-        coisa.style.top = e[1] + "px";
+        e[3].style.left = e[0] + "px";
+        e[3].style.top = e[1] + "px";
         
     }
     requestAnimationFrame(update);
