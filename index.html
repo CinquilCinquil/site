@@ -1,12 +1,44 @@
+<!-- https://art.pixilart.com/dea7326e581e8d8.gif -->
+<!-- background-color: red; <a class="cta-button"> Left</a>
+
+<button id="move-left-btn" class="cta-button">Left</button>
+	<button id="move-right-btn" class="cta-button" style="left:7%;">Right</button>
+	<button id="move-up-btn" class="cta-button" style="left:12%;">Up</button>
+	<button id="move-down-btn" class="cta-button" style="left:17%;">Down</button>
+
+-->
 <!DOCTYPE html>
 <html>
     <head>
     <title>The Official Carlos Page</title>
     <style>
+		body {
+			background-color: #009338;
+		}
+		.cta-button {
+			display: inline-block;
+			top: 84%;
+			left: 2%;
+			position: absolute;
+			width: 56px;
+			margin: 30px auto;
+			padding: 10px;
+			background-color: #ff5a5f;
+			color: #fff;
+			text-align: center;
+			text-decoration: none;
+			font-weight: bold;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+			transition: all 0.3s ease-in-out;
+		}
+		.cta-button:hover {
+			background-color: #ff4348;
+		}
         .container {
-            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvKFFnfkA3eYqVBgr3yCTnFtfPjthSnsm4tc6G1rVzsEet6Vd7QbitgfpScKbs9qOqZyk&usqp=CAU");
-            background-position: left;
-            height: 800px;
+            background-image: url("grass.png");
+			width: 1487px;
+			height: 699px;
         }
 		#square {
 			position: absolute;
@@ -14,15 +46,14 @@
 			left: 50px;
 			width: 64px;
 			height: 64px;
-			background-color: red;
-            background-image: url("https://art.pixilart.com/dea7326e581e8d8.gif");
+            background-image: url("cool.png");
             background-size: 64px;
 		}
         #coisa {
             position: absolute;
             top: 0px;
             left: 0px;
-            background-color: black;
+            background-image: url("uncool.png");
             width: 64px;
 			height: 64px;
         }
@@ -30,9 +61,7 @@
     </head>
     <body>
     <div class="container">
-    <div id="square"></div> 
-    <p>aaaaaa</p>
-    
+    <div id="square"></div>
     <script src="game.js"></script>
     </div>
     </body>
