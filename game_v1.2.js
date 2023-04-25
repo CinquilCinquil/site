@@ -1,8 +1,18 @@
 //Math functions
 
+function abs(valor)
+{
+    if (valor < 0)
+    {
+        return -valor;
+    }
+    return valor;
+
+}
+
 function sign(valor)
 {
-    if (valor == 0)
+    if (abs(valor) < 1)
     {
         return 0;
     }
@@ -30,8 +40,9 @@ square.style.top = y + "px";
 var t = [false,false,false,false];
 var intervalOver = true;
 
-var nEnemies = 3;
+var nEnemies = 4;
 var enemies = [];
+var spds = [0.75,1,2.1,1];
 
 //Spawning enemies
 for (let i = 0;i < nEnemies;i ++)
@@ -40,25 +51,39 @@ for (let i = 0;i < nEnemies;i ++)
 	box.id = "coisa";
 	document.body.appendChild(box);
 	
-	enemies.push([300.0*i,200.0*i,3,box]);
+	enemies.push([300.0*i,200.0*i,1,box,spds[i]]);
 }
+enemies[3][2] = -1;
 
 function update()
 {
-	var eSpd = 1;
+	var eSpd = 1.6;
 	
 	//updating enemies
     for (let i = 0;i < nEnemies;i ++)
     {
         var e = enemies[i];
+        eSpd = e[4];
 		var dirX = sign(parseFloat(square.style.left) - e[0]);
 		var dirY = sign(parseFloat(square.style.top) - e[1]);
         
-        e[0] += dirX*eSpd;
-        e[1] += dirY*eSpd;
+        e[0] += dirX*eSpd*e[2];
+        e[1] += dirY*eSpd*e[2];
 
         e[3].style.left = e[0] + "px";
         e[3].style.top = e[1] + "px";
+
+        if (i == 0)
+        {
+            e[3].style.width = 108 + "px";
+            e[3].style.height = 108 + "px";
+
+        }
+        if (i == 3)
+        {
+            e[3].style.width = 24 + "px";
+            e[3].style.height = 24 + "px";
+        }
 		
 		//Collision
 		for (let j = 0;j < nEnemies;j ++)
